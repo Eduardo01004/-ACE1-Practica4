@@ -1,0 +1,170 @@
+body
+{
+    background-color: #a05000;
+}
+
+div 
+{
+    display: block;
+    float: left;
+    padding: 8px
+    
+}
+
+
+div.Tablero
+{
+    position: relative;
+    margin-left: 350px;
+    margin-top: 10px;
+    
+}
+
+div.Fila1
+{
+position:absolute;
+ top:3px;
+
+ left:345px;
+ float: left;
+}
+
+div.Fila2
+{
+position:absolute;
+ top:70px;
+
+ left:345px;
+ float: left;
+}
+
+div.Fila4
+{
+position:absolute;
+ top:200px;
+
+ left:345px;
+ float: left;
+}
+
+div.Fila3
+{
+position:absolute;
+ top:140px;
+
+ left:345px;
+ float: left;
+}
+
+div.Fila5
+{
+position:absolute;
+ top:260px;
+
+ left:345px;
+ float: left;
+}
+div.Fila6
+{
+position:absolute;
+ top:330px;
+
+ left:345px;
+ float: left;
+}
+div.Fila7
+{
+position:absolute;
+ top:400px;
+
+ left:345px;
+ float: left;
+}
+div.Fila8
+{
+position:absolute;
+ top:470px;
+
+ left:345px;
+ float: left;
+}
+div.Fichas1
+{
+position:absolute;
+ top:20px;
+
+ left:1px;
+ float: left;
+}
+
+div.Fichas2
+{
+position:absolute;
+ top:20px;
+
+ left:70px;
+ float: left;
+}
+div.Fichas3
+{
+position:absolute;
+ top:20px;
+
+ left:129px;
+ float: left;
+}
+div.Fichas4
+{
+position:absolute;
+ top:20px;
+
+ left:198px;
+ float: left;
+}
+div.Fichas5
+{
+position:absolute;
+ top:20px;
+
+ left:270px;
+ float: left;
+}
+div.Fichas6
+{
+position:absolute;
+ top:20px;
+
+ left:338px;
+ float: left;
+}
+div.Fichas7
+{
+position:absolute;
+ top:20px;
+
+ left:408px;
+ float: left;
+}
+div.Fichas8
+{
+position:absolute;
+ top:20px;
+
+ left:480px;
+ float: left;
+}
+
+div.Fichas9
+{
+position:absolute;
+ top:20px;
+
+ left:70px;
+ float: left;
+}
+
+
+
+
+
+
