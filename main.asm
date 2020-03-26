@@ -1336,7 +1336,13 @@ prueba:
     VerificarEE2
     VerificarEE3
     VerificarEE4
-    KoR1
+    VerificarMedio1
+    VerificarMedio2
+    VerificarMedio3
+    VerificarMedio4
+    VerificarMedio5
+    VerificarMedio6
+    VerificarMedio7
     cmp cx , 0
     je TurnoNegras
     cmp cx, 1
@@ -1546,6 +1552,8 @@ validarF5:
     imprimir pediry
     imprimir saltop
     escribir
+    KoR1 al
+    KoR2 al
     cmp al, '8'
     je gu8
     cmp al, '7'
@@ -1755,40 +1763,27 @@ validarF1:
 
     imprimir salto
     imprimir msjerror2
-
+    
 
     jmp prueba
 
 
 guarda8:
     guardarfilas1 matriz8 ,fila8,'F','N'
-    jmp fin3
 guarda7:
     guardarfilas1 matriz7 ,fila7,'F','N'
-    jmp fin3
 guarda6:
     guardarfilas1 matriz6 ,fila6,'F','N'
-    jmp fin3
 guarda5:
     guardarfilas1 matriz5 ,fila5,'F','N'
-    jmp fin3
 guarda4:
     guardarfilas1 matriz4 ,fila4,'F','N'
-    jmp fin3
 guarda3:
     guardarfilas1 matriz3 ,fila3,'F','N'
-    jmp fin3
 guarda2:
     guardarfilas1 matriz2 ,fila2,'F','N'
-    jmp fin3
 guarda1:
     guardarfilas1 matriz1 ,fila1,'F','N'
-    jmp fin3
-fin3:
-
-    
-    
-
  ;-------------------------------aqui comienza para las blancas-------------------------
 TurnoBlancas:
     mov cx , 0
@@ -1875,7 +1870,7 @@ guardarMovF6B:
 guardarMovF5B:
     guardarfilas8B matriz5,fila5,'F','B'
 guardarMovF4B:
-    guardarfilas8B matriz5,fila4,'F','B'
+    guardarfilas8B matriz4,fila4,'F','B'
 guardarMovF3B:
     guardarfilas8B matriz3,fila3,'F','B'
 guardarMovF2B:
@@ -1915,7 +1910,7 @@ validarF7B:
 
     ;; ------------------------Movimientos para B------------------------------
 guardarMov8B:
-    guardarfilasB matriz8,fila8 ,'F','B'
+    guardarfilasB matriz8, fila8 ,'F','B'
 guardarMov7B:
     guardarfilasB matriz7 ,fila7,'F','B'
 guardarMov6B:
@@ -1986,6 +1981,8 @@ validarF5B:
     imprimir pediry
     imprimir saltop
     escribir
+    KoR1 al
+    KoR2 al
     cmp al, '8'
     je gu8B
     cmp al, '7'
@@ -2061,17 +2058,17 @@ gua8B:
 gua7B:
     guardarfilas4B matriz7 ,fila7,'F','B'
 gua6B:
-    guardarfilas4B matriz6 ,fila7,'F','B'
+    guardarfilas4B matriz6 ,fila6,'F','B'
 gua5B:
-    guardarfilas4B matriz5 ,fila6,'F','B'
+    guardarfilas4B matriz5 ,fila5,'F','B'
 gua4B:
-    guardarfilas4B matriz4 ,fila5,'F','B'
+    guardarfilas4B matriz4 ,fila4,'F','B'
 gua3B:
-    guardarfilas4B matriz3 ,fila4,'F','B'
+    guardarfilas4B matriz3 ,fila3,'F','B'
 gua2B:
-    guardarfilas4B matriz2 ,fila3,'F','B'
+    guardarfilas4B matriz2 ,fila2,'F','B'
 gua1B:
-    guardarfilas4B matriz1 ,fila2,'F','B'
+    guardarfilas4B matriz1 ,fila1,'F','B'
 
 
 
@@ -2145,11 +2142,8 @@ validarF2B:
     je guard2B
     cmp al, '1'
     je guard1B
-
     imprimir salto
     imprimir msjerror2
-
-
     jmp prueba
 
 guard8B:

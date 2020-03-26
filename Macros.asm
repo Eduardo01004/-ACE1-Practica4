@@ -68,12 +68,13 @@ endm
 
 
 compararCadena macro string1,string2
-		push offset string2
-		push offset string1
-        call Compare_String
-	endm
+    push offset string2
+    push offset string1
+    call Compare_String
+endm
 
 
+;-------------------lara  negras-------
 guardarfilas macro arreglo,fila, car1, car2
     mov arreglo + 1 * 4 + 7,car1
     mov arreglo + 1 * 4 + 8,car2
@@ -180,7 +181,7 @@ endm
 guardarfilas2B macro arreglo, fila,car1, car2
     mov arreglo + 6 * 4 + 27,car1
     mov arreglo + 6 * 4 + 28,car2
-    mov fila + 0 * 2 + 6 , 50
+    mov fila + 6 , 50
     inc punteoBlanca
     jmp prueba
 endm
@@ -188,7 +189,7 @@ endm
 guardarfilas1B macro arreglo,fila ,car1, car2
     mov arreglo + 7 * 4 + 30,car1
     mov arreglo + 7 * 4 + 31,car2
-    mov fila + 0 * 2 + 7 , 50
+    mov fila + 7 , 50
     inc punteoBlanca
     jmp prueba
 endm
@@ -570,7 +571,7 @@ VS1 macro arreglo, car1, car2
 endm
 
 
-; ----------------Validar Jugadas------------
+; ----------------Validar Jugadas de capturar------------
 VerificarE1 macro  ba
     xor bx,bx
     cmp fila1[0],'1'
@@ -725,9 +726,480 @@ VerificarEE4 macro
 
 endm
 
+VerificarMedio1 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila1 + bx],'1'
+        je YL10
+        cmp [fila1 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila1 + bx],'2'
+            je VERJ1
+            cmp [fila1 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila1 + bx],'2'
+            je VERJ3
+            cmp [fila1 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila2 + bx],'2'
+            je VERJ4
+            cmp [fila2 + bx],'1'
+            je VERJ4
+            jmp YL12
+        VERJ4:
+            mov [fila1 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+
+VerificarMedio2 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila8 + bx],'1'
+        je YL10
+        cmp [fila8 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila8 + bx],'2'
+            je VERJ1
+            cmp [fila8 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila8 + bx],'2'
+            je VERJ3
+            cmp [fila8 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila7 + bx],'2'
+            je VERJ4
+            cmp [fila7 + bx],'1'
+            je VERJ4
+            jmp YL12
+        VERJ4:
+            mov [fila8 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarMedio3 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila7 + bx],'1'
+        je YL10
+        cmp [fila7 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila7 + bx],'2'
+            je VERJ1
+            cmp [fila7 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila7 + bx],'2'
+            je VERJ3
+            cmp [fila7 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila6 + bx],'2'
+            je VERJ5
+            cmp [fila6 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila8 + bx],'2'
+            je VERJ4
+            cmp [fila8 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila7 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarMedio4 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila6 + bx],'1'
+        je YL10
+        cmp [fila6 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila6 + bx],'2'
+            je VERJ1
+            cmp [fila6 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila6 + bx],'2'
+            je VERJ3
+            cmp [fila6 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila5 + bx],'2'
+            je VERJ5
+            cmp [fila5 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila7 + bx],'2'
+            je VERJ4
+            cmp [fila7 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila6 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+endm
+
+VerificarMedio5 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila5 + bx],'1'
+        je YL10
+        cmp [fila5 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila5 + bx],'2'
+            je VERJ1
+            cmp [fila5 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila5 + bx],'2'
+            je VERJ3
+            cmp [fila5 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila4 + bx],'2'
+            je VERJ5
+            cmp [fila4 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila6 + bx],'2'
+            je VERJ4
+            cmp [fila6 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila5 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarMedio6 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila4 + bx],'1'
+        je YL10
+        cmp [fila4 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila4 + bx],'2'
+            je VERJ1
+            cmp [fila4 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila4 + bx],'2'
+            je VERJ3
+            cmp [fila4 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila3 + bx],'2'
+            je VERJ5
+            cmp [fila3 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila5 + bx],'2'
+            je VERJ4
+            cmp [fila5 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila4 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarMedio7 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila3 + bx],'1'
+        je YL10
+        cmp [fila3 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila3 + bx],'2'
+            je VERJ1
+            cmp [fila3 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila3 + bx],'2'
+            je VERJ3
+            cmp [fila3 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila2 + bx],'2'
+            je VERJ5
+            cmp [fila2 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila4 + bx],'2'
+            je VERJ4
+            cmp [fila4 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila3 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarMedio8 macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila2 + bx],'1'
+        je YL10
+        cmp [fila2 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila2 + bx],'2'
+            je VERJ1
+            cmp [fila2 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila2 + bx],'2'
+            je VERJ3
+            cmp [fila2 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila1 + bx],'2'
+            je VERJ5
+            cmp [fila1 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila3 + bx],'2'
+            je VERJ4
+            cmp [fila3 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila2 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+VerificarGrande macro 
+    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
+    xor bx,bx
+    YLA1:
+        cmp  bx,7d
+        jge YL9
+        mov buffer2,bx
+        cmp [fila2 + bx],'1';si hay una ficha negra primero 
+        je YL10
+        cmp [fila2 + bx],'2'
+        je YL10
+        jmp YL12
+        YL10:
+            sub bx,1d
+            cmp [fila2 + bx],'2'
+            je VERJ1
+            cmp [fila2 + bx],'1'
+            je VERJ1
+            jmp YL12
+        VERJ1:
+            add bx,2d
+            cmp [fila2 + bx],'2'
+            je VERJ3
+            cmp [fila2 + bx],'1'
+            je VERJ3
+            jmp YL12
+        VERJ3:
+            sub bx,1d
+            cmp [fila1 + bx],'2'
+            je VERJ5
+            cmp [fila1 + bx],'1'
+            je VERJ5
+            jmp YL12
+        VERJ5:
+            cmp [fila3 + bx],'2'
+            je VERJ4
+            cmp [fila3 + bx],'1'
+            je VERJ4
+        VERJ4:
+            mov [fila2 + bx],'0'
+            imprimir msjcomer
+            imprimir salto
+            jmp YL12
+        YL11:
+            jmp YL12
+        YL12:
+        mov bx,buffer2
+        inc bx
+        jmp YLA1
+        YL9:
+
+endm
+
+
+
+
+
 ; ----------------jugadas del ko------------------
 
-KoR1 macro
+KoR1 macro bz
+    LOCAL R1,RA1,R3,RA3,R4,RA4,R5,RA5,RFinal,Rnada,RFinal2
     cmp fila8[2],'1'
     je R1
     cmp fila8[2],'2'
@@ -747,7 +1219,7 @@ KoR1 macro
         jmp Rnada
     R5:
         cmp fila7[4],'2'
-        je Rfinal
+        je RFinal
         jmp Rnada
     RA1:
         cmp fila8[4],'2'
@@ -763,15 +1235,79 @@ KoR1 macro
         jmp Rnada
     RA5:
         cmp fila7[4],'1'
-        je Rfinal
+        je RFinal
         jmp Rnada
     RFinal:
-        imprimir msjKo1
-        imprimir salto
-        getChar
+        cmp bz,'1'
+        je RFinal2
+        RFinal2:
+            mov fila8[3],'0'
+            mov matriz8 + 3 * 4 + 15,32
+            mov matriz8 + 3 * 4 + 16,32
+            imprimir salto
+            imprimir msjKo1
+            imprimir salto
+            getChar
         jmp Rnada
     Rnada: 
 endm
+
+KoR2 macro bz
+    LOCAL R1,RA1,R3,RA3,R4,RA4,R5,RA5,RFinal,Rnada,RFinal2
+    cmp fila1[2],'1'
+    je R1
+    cmp fila1[2],'2'
+    je RA1
+    jmp Rnada
+    R1:
+        cmp fila1[4],'1'
+        je R3
+        jmp Rnada
+    R3:
+        cmp fila1[5],'2'
+        je R4
+        jmp Rnada
+    R4:
+        cmp fila2[3],'1'
+        je R5
+        jmp Rnada
+    R5:
+        cmp fila2[4],'2'
+        je RFinal
+        jmp Rnada
+    RA1:
+        cmp fila1[4],'2'
+        je RA3
+        jmp Rnada
+    RA3:
+        cmp fila1[5],'1'
+        je RA4
+        jmp Rnada
+    RA4:
+        cmp fila2[3],'2'
+        je RA5
+        jmp Rnada
+    RA5:
+        cmp fila2[4],'1'
+        je RFinal
+        jmp Rnada
+    RFinal:
+        cmp bz,'1'
+        je RFinal2
+        RFinal2:
+            mov fila1[3],'0'
+            mov matriz1 + 7 * 4 + 30,32
+            mov matriz1 + 7 * 4 + 31,32
+            imprimir salto
+            imprimir msjKo1
+            imprimir salto
+            getChar
+        jmp Rnada
+    Rnada: 
+endm
+
+
+
 
 pasar macro
     LOCAL printGB,printGN,gg1
