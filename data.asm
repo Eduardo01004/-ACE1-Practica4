@@ -57,6 +57,8 @@ msjsalida db '<< Saliendo del sistema.......... ',13,10,10,'$'
 ;---------------------MENSAJES DE JUGADAS----------------------
 msjcomer db ' << ESta ficha ha sido comida ' ,13,10,'$'
 msjko1   db ' << NO puede jugar una ficha en la Posicion D8 por la regla KO ',13,10,'$'
+msjsuicidio db ' << No se puede ingresar la ficha en esa posicion por regla de suicidio ' ,13,10,'$'
+
 
 ;------Arreglo del tablero----------------------
 
@@ -178,3 +180,4 @@ Nuno db 62,'1',62,0
 Ndos db '2'
 Ntres db '3'
 buffer2 dw ? 
+

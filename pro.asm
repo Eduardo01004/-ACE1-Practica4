@@ -132,25 +132,22 @@ GetTime proc
 GetTime endp
 
 GetData proc
-    push bp                    ;
+    push bp                    
     mov  bp,sp                
     sub  sp,2                 
     mov word ptr[bp-2],0       
     pusha
-
     mov ah,2ah                 
     int 21h                     
     mov byte ptr[bp-2],dl       
     mov ax,word ptr[bp-2]      
     mov bl,10                   
     div bl                     
-
     xor di,di                   
     add al,48                   
     mov fecha[di+8],al         
     add ah,48                  
     mov fecha[di+9],ah          
-
     mov byte ptr[bp-2],dh       
     mov ax,word ptr [bp-2]      
     mov bl,10                 

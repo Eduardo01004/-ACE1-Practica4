@@ -701,6 +701,19 @@ CrearHtml:
     jmp prueba
 
 CrearHtml2:
+    VerificarE1
+    VerificarEE2
+    VerificarEE3
+    VerificarEE4
+    VerificarMedio1
+    VerificarMedio2
+    VerificarMedio3
+    VerificarMedio4
+    ;VerificarMedio5
+    VerificarMedio6
+    VerificarMedio7
+    mov fila4[3] , '0'
+    mov fila4[4] , '0'
     crearF rutahtml,handle3
     contarElementos doctype
     escribirF handle3 , di , doctype
@@ -1274,8 +1287,10 @@ CrearHtml2:
     contarElementos popen
     escribirF handle3 , di , popen
     obtenerHora
+
     contarElementos hora
     escribirF handle3,di, hora
+    
     contarElementos pclose
     escribirF handle3 , di , pclose
 
@@ -1332,17 +1347,8 @@ prueba:
     imprimir letras
     imprimir salto
 
-    VerificarE1
-    VerificarEE2
-    VerificarEE3
-    VerificarEE4
-    VerificarMedio1
-    VerificarMedio2
-    VerificarMedio3
-    VerificarMedio4
-    VerificarMedio5
-    VerificarMedio6
-    VerificarMedio7
+    
+     
     cmp cx , 0
     je TurnoNegras
     cmp cx, 1
@@ -1933,6 +1939,7 @@ validarF6B:
     imprimir pediry
     imprimir saltop
     escribir
+    VerificarQuemada1 al
     cmp al, '8'
     je g8B
     cmp al, '7'
@@ -1983,6 +1990,7 @@ validarF5B:
     escribir
     KoR1 al
     KoR2 al
+    VerificarQuemada1 al
     cmp al, '8'
     je gu8B
     cmp al, '7'

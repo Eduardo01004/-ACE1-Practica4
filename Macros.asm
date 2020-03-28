@@ -1139,59 +1139,93 @@ VerificarMedio8 macro
 
 endm
 
-VerificarGrande macro 
-    LOCAL YLA1,YL9,YL10,YL11,YL12,VERJ1,VERJ2,VERJ3,VERJ4,VERJ5
-    xor bx,bx
-    YLA1:
-        cmp  bx,7d
-        jge YL9
-        mov buffer2,bx
-        cmp [fila2 + bx],'1';si hay una ficha negra primero 
-        je YL10
-        cmp [fila2 + bx],'2'
-        je YL10
-        jmp YL12
-        YL10:
-            sub bx,1d
-            cmp [fila2 + bx],'2'
-            je VERJ1
-            cmp [fila2 + bx],'1'
-            je VERJ1
-            jmp YL12
-        VERJ1:
-            add bx,2d
-            cmp [fila2 + bx],'2'
-            je VERJ3
-            cmp [fila2 + bx],'1'
-            je VERJ3
-            jmp YL12
-        VERJ3:
-            sub bx,1d
-            cmp [fila1 + bx],'2'
-            je VERJ5
-            cmp [fila1 + bx],'1'
-            je VERJ5
-            jmp YL12
-        VERJ5:
-            cmp [fila3 + bx],'2'
-            je VERJ4
-            cmp [fila3 + bx],'1'
-            je VERJ4
-        VERJ4:
-            mov [fila2 + bx],'0'
-            imprimir msjcomer
-            imprimir salto
-            jmp YL12
-        YL11:
-            jmp YL12
-        YL12:
-        mov bx,buffer2
-        inc bx
-        jmp YLA1
-        YL9:
+VerificarQuemada1 macro bz
+    LOCAL Jugada1,Jugada2,Jugada3,Jugada4,Jugada5,Jugada6,Jugada7,Jugada8,Jugada10,Jugada11,Jugada12,Jugada13,end1,Jfinal
+    cmp fila5[1],'1'
+    je Jugada1
+    cmp fila5[1],'2'
+    je Jugada1
+    jmp end1
+    Jugada1:
+        cmp fila5[2],'1'
+        je Jugada2
+        cmp fila5[2],'2'
+        je Jugada2
+        jmp end1
+    Jugada2:
+        cmp fila5[3],'1'
+        je Jugada3
+        cmp fila5[3],'2'
+        je Jugada3
+        jmp end1
+    Jugada3:
+        cmp fila5[4],'1'
+        je Jugada4
+        cmp fila5[4],'2'
+        je Jugada4
+        jmp end1
+    Jugada4:
+        cmp fila5[5],'1'
+        je Jugada5
+        cmp fila5[5],'2'
+        je Jugada5
+        jmp end1
+    Jugada5:
+        cmp fila4[5],'1'
+        je Jugada6
+        cmp fila4[5],'2'
+        je Jugada6
+        jmp end1
+    Jugada6:
+        cmp fila3[5],'1'
+        je Jugada7
+        cmp fila3[5],'2'
+        je Jugada7
+        jmp end1
+    Jugada7:
+        cmp fila3[4],'1'
+        je Jugada8
+        cmp fila3[4],'2'
+        je Jugada8
+        jmp end1
+    Jugada8:
+        cmp fila3[3],'1'
+        je Jugada10
+        cmp fila3[3],'2'
+        je Jugada10
+        jmp end1
+    Jugada10:
+        cmp fila4[1],'1'
+        je Jugada11
+        cmp fila4[1],'2'
+        je Jugada11
+        jmp end1
+    Jugada11:
+        cmp fila4[3],'1'
+        je Jugada12
+        cmp fila4[3],'2'
+        je Jugada12
+        jmp end1
+    Jugada12:
+        cmp fila4[4],'1'
+        je Jugada13
+        cmp fila4[4],'2'
+        je Jugada13
+        jmp end1
+    Jugada13:
+            cmp bz,'4'
+            je Jfinal
+            jmp end1
+    Jfinal:
+        imprimir salto
+        imprimir msjsuicidio
+        
+        getChar
+        jmp end1
+        
+    end1:
 
 endm
-
 
 
 
